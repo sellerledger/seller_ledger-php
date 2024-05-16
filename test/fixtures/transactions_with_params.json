@@ -1,0 +1,90 @@
+{
+    "transactions": [
+        {
+            "transaction_type": "financial",
+            "transaction_id": "cb0f02db-bc91-4bef-b71b-9befdda86f90",
+            "transaction_date": "2024-05-14T19:14:55.917Z",
+            "transacted_with": "USPS",
+            "description": "Shipping",
+            "amount": "-8.5",
+            "currency_code": "USD",
+            "category": {
+                "id": "aa89a84a-204c-4f44-be33-9f5f5fab7acd",
+                "name": "Shipping costs",
+                "type": "Expense"
+            }
+        },
+        {
+            "transaction_type": "financial",
+            "transaction_id": "a030f507-493c-4f24-9866-36669c127174",
+            "transaction_date": "2024-05-14T19:14:55.881Z",
+            "transacted_with": "Awesome Bank",
+            "description": "Credit Card Payment",
+            "amount": "192.09",
+            "currency_code": "USD",
+            "category": null
+        },
+        {
+            "transaction_type": "financial",
+            "transaction_id": "34942632-9210-4c7a-a066-f65855502ef4",
+            "transaction_date": "2024-05-14T19:14:55.846Z",
+            "transacted_with": "Shopify",
+            "description": "Q2 Sales Tax payment",
+            "amount": "-9.18",
+            "currency_code": "USD",
+            "category": {
+                "id": "9992aba5-3dcd-4d98-8917-ca86a9e3749a",
+                "name": "Office expense",
+                "type": "Expense"
+            }
+        },
+        {
+            "transaction_type": "financial",
+            "transaction_id": "508a8e7e-2d8b-45d9-93b8-9a106f0b92eb",
+            "transaction_date": "2024-05-14T19:14:55.810Z",
+            "transacted_with": "Awesome Credit Card",
+            "description": "Credit Card payment",
+            "amount": "-192.09",
+            "currency_code": "USD",
+            "category": {
+                "id": "d44b8eea-ebb1-4cae-8b84-c7df4191c695",
+                "name": "Transfer: Credit Card",
+                "type": "Liability"
+            }
+        },
+        {
+            "transaction_type": "financial",
+            "transaction_id": "488efea6-0e8f-47e0-b2c6-3f1f2029c439",
+            "transaction_date": "2024-05-14T19:14:55.775Z",
+            "transacted_with": "eBay",
+            "description": "eBay Payout XXXXXXXXXXXXXXX",
+            "amount": "209.25",
+            "currency_code": "USD",
+            "category": null
+        },
+        {
+            "transaction_type": "order",
+            "transaction_id": "52bae977-296f-4720-b376-c5845c2618b1",
+            "transaction_date": "2024-05-14T19:14:40.453Z",
+            "transacted_with": "eBay",
+            "description": "Anthropology Maxi Dress Size M New Halter Top Black Long Sleeveless",
+            "amount": "35.98",
+            "currency_code": "USD",
+            "category": null
+        },
+        {
+            "transaction_type": "payout",
+            "transaction_id": "f90d3f6d-034c-4734-9335-b46179a7e9cb",
+            "transaction_date": "2024-05-14T19:14:40.422Z",
+            "transacted_with": "eBay",
+            "description": "eBay Payout XXXXXXXXXXXXXXX to Awesome Federal Credit Union",
+            "amount": "-209.25",
+            "currency_code": "USD",
+            "category": {
+                "id": "7e2e5fdb-8846-495c-9583-7963cd0353be",
+                "name": "Transfer: Checking Account",
+                "type": "Asset"
+            }
+        }
+    ]
+}

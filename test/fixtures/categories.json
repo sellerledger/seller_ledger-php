@@ -1,0 +1,129 @@
+{
+    "categories": [
+        {
+            "id": "e34694a9-8830-4304-8850-cb27200b68f5",
+            "name": "Advertising",
+            "type": "Expense"
+        },
+        {
+            "id": "eb125214-2133-4cbb-9ac0-54605a7a6a08",
+            "name": "Car or truck",
+            "type": "Expense"
+        },
+        {
+            "id": "33ce993c-5411-476c-be9b-46261b361a82",
+            "name": "Commissions and fees",
+            "type": "Expense"
+        },
+        {
+            "id": "87ed47f1-b935-45e4-9da2-73862104c1fb",
+            "name": "Contract labor",
+            "type": "Expense"
+        },
+        {
+            "id": "703acfd0-552b-4576-b4e9-a318ed1aeacd",
+            "name": "Costs of goods sold",
+            "type": "Expense"
+        },
+        {
+            "id": "70c5d34a-08d9-48f6-8b08-c1467127b90d",
+            "name": "Discounts",
+            "type": "Income"
+        },
+        {
+            "id": "41de0b9d-956b-499d-8638-b887fad40160",
+            "name": "eBay sales",
+            "type": "Income"
+        },
+        {
+            "id": "37c59ec0-acd8-49c3-a1ca-5debfc53eb50",
+            "name": "Estimated tax",
+            "type": "Expense"
+        },
+        {
+            "id": "1a2009f4-1914-47f3-b953-aab08aa8568f",
+            "name": "Etsy sales",
+            "type": "Income"
+        },
+        {
+            "id": "747deeeb-2823-4f04-be18-8463c8e13acc",
+            "name": "Fees due",
+            "type": "Liability"
+        },
+        {
+            "id": "e3a4df17-eab7-408c-ba81-6f44838f52ca",
+            "name": "Fees due",
+            "type": "Liability"
+        },
+        {
+            "id": "d0e50637-0136-4a9c-b63f-40258a66fd85",
+            "name": "Home office",
+            "type": "Expense"
+        },
+        {
+            "id": "2b982920-4886-4866-b62a-2bd9375140af",
+            "name": "Insurance",
+            "type": "Expense"
+        },
+        {
+            "id": "479bd485-3053-417a-af7e-596e47bfc592",
+            "name": "Legal and professional services",
+            "type": "Expense"
+        },
+        {
+            "id": "ae69824a-0951-4b05-8ea0-31da710b0aef",
+            "name": "Meals and entertainment",
+            "type": "Expense"
+        },
+        {
+            "id": "74237d76-9cae-4ceb-9bad-8abf04b5b075",
+            "name": "Not for business",
+            "type": "NotForBusiness"
+        },
+        {
+            "id": "9992aba5-3dcd-4d98-8917-ca86a9e3749a",
+            "name": "Office expense",
+            "type": "Expense"
+        },
+        {
+            "id": "b607eccc-6c5d-48e8-9391-4d00194fe6a7",
+            "name": "Orders received",
+            "type": "Asset"
+        },
+        {
+            "id": "495744c9-0d15-46e2-9235-f6e5868f9101",
+            "name": "Orders received",
+            "type": "Asset"
+        },
+        {
+            "id": "bba94bd7-6e9d-41c0-bc61-75330d04907e",
+            "name": "Orders received",
+            "type": "Asset"
+        },
+        {
+            "id": "515d623c-83c0-4ed1-82a5-3bb6e44b75b0",
+            "name": "Orders received",
+            "type": "Asset"
+        },
+        {
+            "id": "c5106f73-731f-4a05-b887-46c3588bb227",
+            "name": "Orders received",
+            "type": "Asset"
+        },
+        {
+            "id": "713a61e5-8c2a-49c1-9dea-885c01679bf4",
+            "name": "Other expenses",
+            "type": "Expense"
+        },
+        {
+            "id": "606f120f-0336-4e24-a327-ed3ad2f7148c",
+            "name": "Other income",
+            "type": "Income"
+        },
+        {
+            "id": "e5c9964b-2e2f-4082-80cc-2fcc90a277b9",
+            "name": "Owners equity",
+            "type": "Equity"
+        }
+    ]
+}

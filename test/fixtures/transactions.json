@@ -1,0 +1,42 @@
+{
+    "transactions": [
+        {
+            "transaction_type": "financial",
+            "transaction_id": "cb0f02db-bc91-4bef-b71b-9befdda86f90",
+            "transaction_date": "2024-05-14T19:14:55.917Z",
+            "transacted_with": "USPS",
+            "description": "Shipping",
+            "amount": "-8.5",
+            "currency_code": "USD",
+            "category": {
+                "id": "aa89a84a-204c-4f44-be33-9f5f5fab7acd",
+                "name": "Shipping costs",
+                "type": "Expense"
+            }
+        },
+        {
+            "transaction_type": "financial",
+            "transaction_id": "a030f507-493c-4f24-9866-36669c127174",
+            "transaction_date": "2024-05-14T19:14:55.881Z",
+            "transacted_with": "Awesome Bank",
+            "description": "Credit Card Payment",
+            "amount": "192.09",
+            "currency_code": "USD",
+            "category": null
+        },
+        {
+            "transaction_type": "financial",
+            "transaction_id": "34942632-9210-4c7a-a066-f65855502ef4",
+            "transaction_date": "2024-05-14T19:14:55.846Z",
+            "transacted_with": "Shopify",
+            "description": "Q2 Sales Tax payment",
+            "amount": "-9.18",
+            "currency_code": "USD",
+            "category": {
+                "id": "9992aba5-3dcd-4d98-8917-ca86a9e3749a",
+                "name": "Office expense",
+                "type": "Expense"
+            }
+        }
+    ]
+}
