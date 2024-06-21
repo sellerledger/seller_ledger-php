@@ -8,290 +8,346 @@ class Client extends SellerLedger
     return new Client($key);
   }
 
+  public function getAccounts()
+  {
+    return $this->get("accounts", [], "accounts");
+  }
+
+  public function getAccount($id, $parameters = [])
+  {
+    $this->throwIfNull($id, "Connection ID");
+    return $this->get("accounts/" . $id, $parameters, "account");
+  }
+
+  public function getAccountEntries($id, $parameters = [])
+  {
+    $this->throwIfNull($id, "Connection ID");
+    return $this->get("accounts/" . $id . "/entries", $parameters, "entries");
+  }
+
+  public function getAccountTransactions($id, $parameters = [])
+  {
+    $this->throwIfNull($id, "Connection ID");
+    return $this->get("accounts/" . $id . "/transactions", $parameters, "transactions");
+  }
+
+  public function getBusiness()
+  {
+    return $this->get("business", [], "business");
+  }
+
   public function getCategories()
   {
-    return $this->get('categories', [], 'categories');
+    return $this->get("categories", [], "categories");
   }
 
   public function getConnections($parameters = [])
   {
-    return $this->get('connections', $parameters, 'connections');
+    return $this->get("connections", $parameters, "connections");
   }
 
   public function getConnection($id, $parameters = [])
   {
-    $this->throwIfNull($id, 'Connection ID');
-    return $this->get('connections/' . $id, $parameters, 'connection');
+    $this->throwIfNull($id, "Connection ID");
+    return $this->get("connections/" . $id, $parameters, "connection");
   }
 
   public function createConnection($parameters = [])
   {
-    return $this->post('connections', $parameters, 'connection');
+    return $this->post("connections", $parameters, "connection");
   }
 
   public function deleteConnection($id)
   {
-    $this->throwIfNull($id, 'Connection ID');
-    return $this->delete('connections/' . $id, 'connection');
+    $this->throwIfNull($id, "Connection ID");
+    return $this->delete("connections/" . $id, "connection");
   }
 
   public function getConnectionTransaction($connection_id, $id, $parameters = [])
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
-    $this->throwIfNull($id, 'Transaction ID');
+    $this->throwIfNull($connection_id, "Connection ID");
+    $this->throwIfNull($id, "Transaction ID");
 
     return $this->get(
-      'connections/' . $connection_id . '/transactions/' . $id,
+      "connections/" . $connection_id . "/transactions/" . $id,
       $parameters,
-      'transaction'
+      "transaction"
     );
   }
 
   public function getConnectionTransactions($connection_id, $parameters = [])
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
+    $this->throwIfNull($connection_id, "Connection ID");
 
     return $this->get(
-      'connections/' . $connection_id . '/transactions',
+      "connections/" . $connection_id . "/transactions",
       $parameters,
-      'transactions'
+      "transactions"
     );
   }
 
   public function getConnectionFinancialTransactions($connection_id, $parameters = [])
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
+    $this->throwIfNull($connection_id, "Connection ID");
 
     return $this->get(
-      'connections/' . $connection_id . '/transactions/financial',
+      "connections/" . $connection_id . "/transactions/financial",
       $parameters,
-      'transactions'
+      "transactions"
     );
   }
 
   public function getConnectionFinancialTransaction($connection_id, $id, $parameters = [])
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
-    $this->throwIfNull($id, 'Transaction ID');
+    $this->throwIfNull($connection_id, "Connection ID");
+    $this->throwIfNull($id, "Transaction ID");
 
     return $this->get(
-      'connections/' . $connection_id . '/transactions/financial/' . $id,
+      "connections/" . $connection_id . "/transactions/financial/" . $id,
       $parameters,
-      'transaction'
+      "transaction"
     );
   }
 
   public function createConnectionFinancialTransaction($connecton_id, $parameters = [])
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
+    $this->throwIfNull($connection_id, "Connection ID");
 
-    return $this->post('connections/' . $connection_id . '/transactions/financial', $parameters, 'transaction');
+    return $this->post("connections/" . $connection_id . "/transactions/financial", $parameters, "transaction");
   }
 
   public function updateConnectionFinancialTransaction($connection_id, $id, $parameters = [])
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
-    $this->throwIfNull($id, 'Transaction ID');
+    $this->throwIfNull($connection_id, "Connection ID");
+    $this->throwIfNull($id, "Transaction ID");
 
-    return $this->put('connections/' . $connection_id . '/transactions/financial' . $id, $parameters, 'transaction');
+    return $this->put("connections/" . $connection_id . "/transactions/financial" . $id, $parameters, "transaction");
   }
 
   public function deleteConnectionFinancialTransaction($connection_id, $id)
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
-    $this->throwIfNull($id, 'Transaction ID');
+    $this->throwIfNull($connection_id, "Connection ID");
+    $this->throwIfNull($id, "Transaction ID");
 
-    return $this->delete('connections/' . $connection_id . '/transactions/financial' . $id, 'transaction');
+    return $this->delete("connections/" . $connection_id . "/transactions/financial" . $id, "transaction");
   }
 
   public function getConnectionRefundTransactions($connection_id, $parameters = [])
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
+    $this->throwIfNull($connection_id, "Connection ID");
 
     return $this->get(
-      'connections/' . $connection_id . '/transactions/refunds',
+      "connections/" . $connection_id . "/transactions/refunds",
       $parameters,
-      'transactions'
+      "transactions"
     );
   }
 
   public function getConnectionRefundTransaction($connection_id, $id, $parameters = [])
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
-    $this->throwIfNull($id, 'Transaction ID');
+    $this->throwIfNull($connection_id, "Connection ID");
+    $this->throwIfNull($id, "Transaction ID");
 
     return $this->get(
-      'connections/' . $connection_id . '/transactions/refunds/' . $id,
+      "connections/" . $connection_id . "/transactions/refunds/" . $id,
       $parameters,
-      'transaction'
+      "transaction"
     );
   }
 
   public function createConnectionRefundTransaction($connecton_id, $parameters = [])
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
+    $this->throwIfNull($connection_id, "Connection ID");
 
-    return $this->post('connections/' . $connection_id . '/transactions/refunds', $parameters, 'transaction');
+    return $this->post("connections/" . $connection_id . "/transactions/refunds", $parameters, "transaction");
   }
 
   public function updateConnectionRefundTransaction($connection_id, $id, $parameters = [])
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
-    $this->throwIfNull($id, 'Transaction ID');
+    $this->throwIfNull($connection_id, "Connection ID");
+    $this->throwIfNull($id, "Transaction ID");
 
-    return $this->put('connections/' . $connection_id . '/transactions/refunds' . $id, $parameters, 'transaction');
+    return $this->put("connections/" . $connection_id . "/transactions/refunds" . $id, $parameters, "transaction");
   }
 
   public function deleteConnectionRefundTransaction($connection_id, $id)
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
-    $this->throwIfNull($id, 'Transaction ID');
+    $this->throwIfNull($connection_id, "Connection ID");
+    $this->throwIfNull($id, "Transaction ID");
 
-    return $this->delete('connections/' . $connection_id . '/transactions/refunds' . $id, 'transaction');
+    return $this->delete("connections/" . $connection_id . "/transactions/refunds" . $id, "transaction");
   }
 
   public function getConnectionOrderTransactions($connection_id, $parameters = [])
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
+    $this->throwIfNull($connection_id, "Connection ID");
 
     return $this->get(
-      'connections/' . $connection_id . '/transactions/orders',
+      "connections/" . $connection_id . "/transactions/orders",
       $parameters,
-      'transactions'
+      "transactions"
     );
   }
 
   public function getConnectionOrderTransaction($connection_id, $id, $parameters = [])
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
-    $this->throwIfNull($id, 'Transaction ID');
+    $this->throwIfNull($connection_id, "Connection ID");
+    $this->throwIfNull($id, "Transaction ID");
 
     return $this->get(
-      'connections/' . $connection_id . '/transactions/orders/' . $id,
+      "connections/" . $connection_id . "/transactions/orders/" . $id,
       $parameters,
-      'transaction'
+      "transaction"
     );
   }
 
   public function createConnectionOrderTransaction($connecton_id, $parameters = [])
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
+    $this->throwIfNull($connection_id, "Connection ID");
 
-    return $this->post('connections/' . $connection_id . '/transactions/orders', $parameters, 'transaction');
+    return $this->post("connections/" . $connection_id . "/transactions/orders", $parameters, "transaction");
   }
 
   public function updateConnectionOrderTransaction($connection_id, $id, $parameters = [])
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
-    $this->throwIfNull($id, 'Transaction ID');
+    $this->throwIfNull($connection_id, "Connection ID");
+    $this->throwIfNull($id, "Transaction ID");
 
-    return $this->put('connections/' . $connection_id . '/transactions/orders' . $id, $parameters, 'transaction');
+    return $this->put("connections/" . $connection_id . "/transactions/orders" . $id, $parameters, "transaction");
   }
 
   public function deleteConnectionOrderTransaction($connection_id, $id)
   {
-    $this->throwIfNull($connection_id, 'Connection ID');
-    $this->throwIfNull($id, 'Transaction ID');
+    $this->throwIfNull($connection_id, "Connection ID");
+    $this->throwIfNull($id, "Transaction ID");
 
-    return $this->delete('connections/' . $connection_id . '/transactions/orders' . $id, 'transaction');
+    return $this->delete("connections/" . $connection_id . "/transactions/orders" . $id, "transaction");
   }
 
   public function getTransactions($parameters = [])
   {
-    return $this->get('transactions', $parameters, 'transactions');
+    return $this->get("transactions", $parameters, "transactions");
   }
 
   public function getTransaction($id, $parameters = [])
   {
-    $this->throwIfNull($id, 'Transaction ID');
-    return $this->get('transactions/' . $id, $parameters, 'transaction');
+    $this->throwIfNull($id, "Transaction ID");
+    return $this->get("transactions/" . $id, $parameters, "transaction");
   }
 
   public function getMileageTransactions($parameters = [])
   {
-    return $this->get('transactions/mileage', $parameters, 'transactions');
+    return $this->get("transactions/mileage", $parameters, "transactions");
   }
 
   public function getMileageTransaction($id, $parameters = [])
   {
-    $this->throwIfNull($id, 'Transaction ID');
-    return $this->get('transactions/mileage/' . $id, $parameters, 'transaction');
+    $this->throwIfNull($id, "Transaction ID");
+    return $this->get("transactions/mileage/" . $id, $parameters, "transaction");
   }
 
   public function createMileageTransaction($parameters = [])
   {
-    return $this->post('transactions/mileage', $parameters, 'transaction');
+    return $this->post("transactions/mileage", $parameters, "transaction");
   }
 
   public function updateMileageTransaction($id, $parameters = [])
   {
-    $this->throwIfNull($id, 'Transaction ID');
-    return $this->put('transactions/mileage/' . $id, $parameters, 'transaction');
+    $this->throwIfNull($id, "Transaction ID");
+    return $this->put("transactions/mileage/" . $id, $parameters, "transaction");
   }
 
   public function deleteMileageTransaction($id)
   {
-    return $this->delete('transactions/mileage/' . $id, 'transaction');
+    return $this->delete("transactions/mileage/" . $id, "transaction");
   }
 
   public function getIncomeTransactions($parameters = [])
   {
-    return $this->get('transactions/income', $parameters, 'transactions');
+    return $this->get("transactions/income", $parameters, "transactions");
   }
 
   public function getIncomeTransaction($id, $parameters = [])
   {
-    $this->throwIfNull($id, 'Transaction ID');
-    return $this->get('transactions/income/' . $id, $parameters, 'transaction');
+    $this->throwIfNull($id, "Transaction ID");
+    return $this->get("transactions/income/" . $id, $parameters, "transaction");
   }
 
   public function createIncomeTransaction($parameters = [])
   {
-    return $this->post('transactions/income', $parameters, 'transaction');
+    return $this->post("transactions/income", $parameters, "transaction");
   }
 
   public function updateIncomeTransaction($id, $parameters = [])
   {
-    $this->throwIfNull($id, 'Transaction ID');
-    return $this->put('transactions/income/' . $id, $parameters, 'transaction');
+    $this->throwIfNull($id, "Transaction ID");
+    return $this->put("transactions/income/" . $id, $parameters, "transaction");
   }
 
   public function deleteIncomeTransaction($id)
   {
-    return $this->delete('transactions/income/' . $id, 'transaction');
+    return $this->delete("transactions/income/" . $id, "transaction");
   }
 
   public function getExpenseTransactions($parameters = [])
   {
-    return $this->get('transactions/expense', $parameters, 'transactions');
+    return $this->get("transactions/expense", $parameters, "transactions");
   }
 
   public function getExpenseTransaction($id, $parameters = [])
   {
-    $this->throwIfNull($id, 'Transaction ID');
-    return $this->get('transactions/expense/' . $id, $parameters, 'transaction');
+    $this->throwIfNull($id, "Transaction ID");
+    return $this->get("transactions/expense/" . $id, $parameters, "transaction");
   }
 
   public function createExpenseTransaction($parameters = [])
   {
-    return $this->post('transactions/expense', $parameters, 'transaction');
+    return $this->post("transactions/expense", $parameters, "transaction");
   }
 
   public function updateExpenseTransaction($id, $parameters = [])
   {
-    $this->throwIfNull($id, 'Transaction ID');
-    return $this->put('transactions/expense/' . $id, $parameters, 'transaction');
+    $this->throwIfNull($id, "Transaction ID");
+    return $this->put("transactions/expense/" . $id, $parameters, "transaction");
   }
 
   public function deleteExpenseTransaction($id)
   {
-    return $this->delete('transactions/expense/' . $id, 'transaction');
+    return $this->delete("transactions/expense/" . $id, "transaction");
+  }
+
+  public function getInventoryPurchases($parameters = [])
+  {
+    return $this->get("inventory/purchases", $parameters, "purchases"); 
+  }
+
+  public function getInventoryPurchase($id, $parameters = [])
+  {
+    $this->throwIfNull($id, "Purchase ID");
+    return $this->get("inventory/purchases/" . $id, $parameters, "purchase"); 
+  }
+
+  public function createInventoryPurchase($parameters = [])
+  {
+    return $this->post("inventory/purchases", $parameters, "purchase");
+  }
+
+  public function updateInventoryPurchase($id, $parameters = [])
+  {
+    $this->throwIfNull($id, "Purchase ID");
+    return $this->put("inventory/purchases/" . $id, $parameters, "purchase");
+  }
+
+  public function deleteInventoryPurchase($id)
+  {
+    $this->throwIfNull($id, "Purchase ID");
+    return $this->delete("inventory/purchases/" . $id, "purchase");
   }
 
   private function get($path, $parameters, $property)
   {
     if ($parameters != []) {
-      $response = $this->client->get($path, ['query' => $parameters]);
+      $response = $this->client->get($path, ["query" => $parameters]);
     } else {
       $response = $this->client->get($path);
     }
@@ -301,13 +357,13 @@ class Client extends SellerLedger
 
   private function post($path, $parameters, $property)
   {
-    $response = $this->client->post($path, ['query' => $parameters]);
+    $response = $this->client->post($path, ["query" => $parameters]);
     return json_decode($response->getBody())->$property;
   }
 
   private function put($path, $parameters, $property)
   {
-    $response = $this->client->put($path, ['query' => $parameters]);
+    $response = $this->client->put($path, ["query" => $parameters]);
     return json_decode($response->getBody())->$property;
   }
 
@@ -319,6 +375,6 @@ class Client extends SellerLedger
 
   private function throwIfNull($var, $name)
   {
-    if (is_null($var)) { throw new \Exception($name . ' must not be null.'); }
+    if (is_null($var)) { throw new \Exception($name . " must not be null."); }
   }
 }
