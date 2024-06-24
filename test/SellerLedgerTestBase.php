@@ -7,7 +7,7 @@ use GuzzleHttp\Middleware;
 use PHPUnit\Framework\TestCase;
 use SellerLedger\Client;
 
-abstract class SellerLedgerTest extends TestCase
+abstract class SellerLedgerTestBase extends TestCase
 {
     protected $history = [];
 

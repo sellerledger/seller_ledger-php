@@ -3,9 +3,9 @@ namespace SellerLedger\Tests\specs;
 
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
-use SellerLedger\Tests\SellerLedgerTest;
+use SellerLedger\Tests\SellerLedgerTestBase;
 
-class CategoryTest extends SellerLedgerTest
+class CategoryTest extends SellerLedgerTestBase
 {
     public function testCategories()
     {
