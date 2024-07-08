@@ -1,5 +1,5 @@
 <?php
-namespace Sellerledger;
+namespace SellerLedger;
 
 class SellerLedger
 {
@@ -14,7 +14,7 @@ class SellerLedger
     if ($key) {
       $this->config = [
         'base_uri' => self::DEFAULT_API_URL . '/',
-        'error_handler' => $this->errorHandler(),
+        'handler' => $this->errorHandler(),
         'headers' => [
           'Authorization' => 'Bearer ' . $key,
           'Content-Type' => 'application/json',
