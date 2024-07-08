@@ -3,7 +3,7 @@ namespace SellerLedger;
 
 class SellerLedger
 {
-  const VERSION = '1.0.0';
+  const VERSION = '1.0.2';
   const DEFAULT_API_URL = 'https://app.sellerledger.com/v1';
 
   protected $client;
