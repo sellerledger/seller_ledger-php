@@ -3,7 +3,7 @@ namespace SellerLedger;
 
 class SellerLedger
 {
-  const VERSION = '1.0.2';
+  const VERSION = '1.0.3';
   const DEFAULT_API_URL = 'https://app.sellerledger.com/v1';
 
   protected $client;
@@ -35,10 +35,9 @@ class SellerLedger
 
         throw new Exception(
           sprintf(
-            '%s %s – %s',
+            '%s – %s',
             $response->getStatusCode(),
-            isset($data->error) ? $data->error : 'something unexpected occurred',
-            isset($data->detail) ? $data->detail : 'please try again'
+            isset($data->error) ? $data->error : 'something unexpected occurred'
           ),
           $response->getStatusCode()
         );

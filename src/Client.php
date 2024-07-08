@@ -109,7 +109,7 @@ class Client extends SellerLedger
     );
   }
 
-  public function createConnectionFinancialTransaction($connecton_id, $parameters = [])
+  public function createConnectionFinancialTransaction($connection_id, $parameters = [])
   {
     $this->throwIfNull($connection_id, "Connection ID");
 
@@ -155,7 +155,7 @@ class Client extends SellerLedger
     );
   }
 
-  public function createConnectionRefundTransaction($connecton_id, $parameters = [])
+  public function createConnectionRefundTransaction($connection_id, $parameters = [])
   {
     $this->throwIfNull($connection_id, "Connection ID");
 
@@ -201,7 +201,7 @@ class Client extends SellerLedger
     );
   }
 
-  public function createConnectionOrderTransaction($connecton_id, $parameters = [])
+  public function createConnectionOrderTransaction($connection_id, $parameters = [])
   {
     $this->throwIfNull($connection_id, "Connection ID");
 
@@ -347,7 +347,7 @@ class Client extends SellerLedger
   private function get($path, $parameters, $property)
   {
     if ($parameters != []) {
-      $response = $this->client->get($path, ["query" => $parameters]);
+      $response = $this->client->get($path, ["body" => json_encode($parameters)]);
     } else {
       $response = $this->client->get($path);
     }
@@ -357,13 +357,13 @@ class Client extends SellerLedger
 
   private function post($path, $parameters, $property)
   {
-    $response = $this->client->post($path, ["query" => $parameters]);
+    $response = $this->client->post($path, ["body" => json_encode($parameters)]);
     return json_decode($response->getBody())->$property;
   }
 
   private function put($path, $parameters, $property)
   {
-    $response = $this->client->put($path, ["query" => $parameters]);
+    $response = $this->client->put($path, ["body" => json_encode($parameters)]);
     return json_decode($response->getBody())->$property;
   }
 
