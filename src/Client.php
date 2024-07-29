@@ -63,7 +63,7 @@ class Client extends SellerLedger
     return $this->delete("connections/" . $id, "connection");
   }
 
-  public function getConnectionRefundTransactions($connection_id, $parameters = [])
+  public function getRefunds($connection_id, $parameters = [])
   {
     $this->throwIfNull($connection_id, "Connection ID");
 
@@ -74,7 +74,7 @@ class Client extends SellerLedger
     );
   }
 
-  public function getConnectionRefundTransaction($connection_id, $id, $parameters = [])
+  public function getRefund($connection_id, $id, $parameters = [])
   {
     $this->throwIfNull($connection_id, "Connection ID");
     $this->throwIfNull($id, "Transaction ID");
@@ -86,14 +86,14 @@ class Client extends SellerLedger
     );
   }
 
-  public function createConnectionRefundTransaction($connection_id, $parameters = [])
+  public function createRefund($connection_id, $parameters = [])
   {
     $this->throwIfNull($connection_id, "Connection ID");
 
     return $this->post("connections/" . $connection_id . "/refunds", $parameters, "transaction");
   }
 
-  public function updateConnectionRefundTransaction($connection_id, $id, $parameters = [])
+  public function updateRefund($connection_id, $id, $parameters = [])
   {
     $this->throwIfNull($connection_id, "Connection ID");
     $this->throwIfNull($id, "Transaction ID");
@@ -101,7 +101,7 @@ class Client extends SellerLedger
     return $this->put("connections/" . $connection_id . "/refunds/" . $id, $parameters, "transaction");
   }
 
-  public function deleteConnectionRefundTransaction($connection_id, $id)
+  public function deleteRefund($connection_id, $id)
   {
     $this->throwIfNull($connection_id, "Connection ID");
     $this->throwIfNull($id, "Transaction ID");
@@ -109,7 +109,7 @@ class Client extends SellerLedger
     return $this->delete("connections/" . $connection_id . "/refunds/" . $id, "transaction");
   }
 
-  public function getConnectionOrderTransactions($connection_id, $parameters = [])
+  public function getOrders($connection_id, $parameters = [])
   {
     $this->throwIfNull($connection_id, "Connection ID");
 
@@ -120,7 +120,7 @@ class Client extends SellerLedger
     );
   }
 
-  public function getConnectionOrderTransaction($connection_id, $id, $parameters = [])
+  public function getOrder($connection_id, $id, $parameters = [])
   {
     $this->throwIfNull($connection_id, "Connection ID");
     $this->throwIfNull($id, "Transaction ID");
@@ -132,14 +132,14 @@ class Client extends SellerLedger
     );
   }
 
-  public function createConnectionOrderTransaction($connection_id, $parameters = [])
+  public function createOrder($connection_id, $parameters = [])
   {
     $this->throwIfNull($connection_id, "Connection ID");
 
     return $this->post("connections/" . $connection_id . "/orders", $parameters, "transaction");
   }
 
-  public function updateConnectionOrderTransaction($connection_id, $id, $parameters = [])
+  public function updateOrder($connection_id, $id, $parameters = [])
   {
     $this->throwIfNull($connection_id, "Connection ID");
     $this->throwIfNull($id, "Transaction ID");
@@ -147,7 +147,7 @@ class Client extends SellerLedger
     return $this->put("connections/" . $connection_id . "/orders/" . $id, $parameters, "transaction");
   }
 
-  public function deleteConnectionOrderTransaction($connection_id, $id)
+  public function deleteOrder($connection_id, $id)
   {
     $this->throwIfNull($connection_id, "Connection ID");
     $this->throwIfNull($id, "Transaction ID");
