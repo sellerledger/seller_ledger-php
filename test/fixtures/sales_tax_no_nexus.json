@@ -1,0 +1,17 @@
+{
+    "tax": {
+        "order_total_amount": 110.0,
+        "shipping": 10.0,
+        "taxable_amount": 0.0,
+        "amount_to_collect": 0.0,
+        "rate": 0.0,
+        "has_nexus": false,
+        "freight_taxable": false,
+        "tax_source": "destination",
+        "jurisdictions": {
+            "country": "US",
+            "state": "OR"
+        },
+        "breakdown": null
+    }
+}

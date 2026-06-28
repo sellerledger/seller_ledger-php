@@ -240,10 +240,15 @@ class Client extends SellerLedger
     return $this->delete("inventory/purchases/" . $id, "purchase");
   }
 
+  public function calculateSalesTax($parameters = [], $options = [])
+  {
+    return $this->post("sales-tax/calculate", $parameters, "tax", $options);
+  }
+
   private function get($path, $parameters, $property)
   {
     if ($parameters != []) {
-      $response = $this->client->get($path, ["body" => json_encode($parameters)]);
+      $response = $this->client->get($path, ["query" => $parameters]);
     } else {
       $response = $this->client->get($path);
     }
@@ -251,9 +256,9 @@ class Client extends SellerLedger
     return json_decode($response->getBody())->$property;
   }
 
-  private function post($path, $parameters, $property)
+  private function post($path, $parameters, $property, $options = [])
   {
-    $response = $this->client->post($path, ["body" => json_encode($parameters)]);
+    $response = $this->client->post($path, array_merge(["body" => json_encode($parameters)], $options));
     return json_decode($response->getBody())->$property;
   }
 
