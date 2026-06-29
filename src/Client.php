@@ -245,6 +245,11 @@ class Client extends SellerLedger
     return $this->post("sales-tax/calculate", $parameters, "tax", $options);
   }
 
+  public function getSalesTaxNexus($parameters = [])
+  {
+    return $this->get("sales-tax/nexus", $parameters, "nexus");
+  }
+
   private function get($path, $parameters, $property)
   {
     if ($parameters != []) {

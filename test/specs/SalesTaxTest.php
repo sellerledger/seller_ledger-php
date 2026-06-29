@@ -59,6 +59,23 @@ class SalesTaxTest extends SellerLedgerTestBase
       $this->assertNull($response->breakdown);
     }
 
+    public function testGetSalesTaxNexus()
+    {
+      $this->http->append(new Response(200, [], file_get_contents(__DIR__ . "/../fixtures/sales_tax_nexus.json")));
+
+      $response = $this->client->getSalesTaxNexus();
+
+      $this->assertCount(1, $this->history);
+
+      $request = reset($this->history)['request'];
+      $this->assertSame('GET', $request->getMethod());
+      $this->assertSame('/sales-tax/nexus', $request->getUri()->getPath());
+
+      $this->assertCount(2, $response);
+      $this->assertSame('CA', $response[0]->state);
+      $this->assertSame('Texas', $response[1]->name);
+    }
+
     public function testCalculateSalesTaxAcceptsRequestOptions()
     {
       $this->http->append(new Response(200, [], file_get_contents(__DIR__ . "/../fixtures/sales_tax.json")));
