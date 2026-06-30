@@ -258,25 +258,31 @@ class Client extends SellerLedger
       $response = $this->client->get($path);
     }
 
-    return json_decode($response->getBody())->$property;
+    return $this->decodeBody($response, $property);
   }
 
   private function post($path, $parameters, $property, $options = [])
   {
     $response = $this->client->post($path, array_merge(["body" => json_encode($parameters)], $options));
-    return json_decode($response->getBody())->$property;
+    return $this->decodeBody($response, $property);
   }
 
   private function put($path, $parameters, $property)
   {
     $response = $this->client->put($path, ["body" => json_encode($parameters)]);
-    return json_decode($response->getBody())->$property;
+    return $this->decodeBody($response, $property);
   }
 
   private function delete($path, $property)
   {
     $response = $this->client->delete($path);
-    return json_decode($response->getBody())->$property;
+    return $this->decodeBody($response, $property);
+  }
+
+  private function decodeBody($response, $property)
+  {
+    $body = json_decode($response->getBody());
+    return is_object($body) && isset($body->$property) ? $body->$property : null;
   }
 
   private function throwIfNull($var, $name)

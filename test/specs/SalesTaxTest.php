@@ -76,6 +76,15 @@ class SalesTaxTest extends SellerLedgerTestBase
       $this->assertSame('Texas', $response[1]->name);
     }
 
+    public function testReturnsNullWhenResponseBodyHasNoProperty()
+    {
+      $this->http->append(new Response(200, [], 'null'));
+
+      $response = $this->client->getSalesTaxNexus();
+
+      $this->assertNull($response);
+    }
+
     public function testCalculateSalesTaxAcceptsRequestOptions()
     {
       $this->http->append(new Response(200, [], file_get_contents(__DIR__ . "/../fixtures/sales_tax.json")));
