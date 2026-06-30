@@ -1,0 +1,6 @@
+{
+    "nexus": [
+        { "country": "US", "state": "CA", "name": "California" },
+        { "country": "US", "state": "TX", "name": "Texas" }
+    ]
+}

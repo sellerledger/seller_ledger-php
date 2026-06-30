@@ -240,33 +240,49 @@ class Client extends SellerLedger
     return $this->delete("inventory/purchases/" . $id, "purchase");
   }
 
+  public function calculateSalesTax($parameters = [], $options = [])
+  {
+    return $this->post("sales-tax/calculate", $parameters, "tax", $options);
+  }
+
+  public function getSalesTaxNexus($parameters = [])
+  {
+    return $this->get("sales-tax/nexus", $parameters, "nexus");
+  }
+
   private function get($path, $parameters, $property)
   {
     if ($parameters != []) {
-      $response = $this->client->get($path, ["body" => json_encode($parameters)]);
+      $response = $this->client->get($path, ["query" => $parameters]);
     } else {
       $response = $this->client->get($path);
     }
 
-    return json_decode($response->getBody())->$property;
+    return $this->decodeBody($response, $property);
   }
 
-  private function post($path, $parameters, $property)
+  private function post($path, $parameters, $property, $options = [])
   {
-    $response = $this->client->post($path, ["body" => json_encode($parameters)]);
-    return json_decode($response->getBody())->$property;
+    $response = $this->client->post($path, array_merge(["body" => json_encode($parameters)], $options));
+    return $this->decodeBody($response, $property);
   }
 
   private function put($path, $parameters, $property)
   {
     $response = $this->client->put($path, ["body" => json_encode($parameters)]);
-    return json_decode($response->getBody())->$property;
+    return $this->decodeBody($response, $property);
   }
 
   private function delete($path, $property)
   {
     $response = $this->client->delete($path);
-    return json_decode($response->getBody())->$property;
+    return $this->decodeBody($response, $property);
+  }
+
+  private function decodeBody($response, $property)
+  {
+    $body = json_decode($response->getBody());
+    return is_object($body) && isset($body->$property) ? $body->$property : null;
   }
 
   private function throwIfNull($var, $name)
