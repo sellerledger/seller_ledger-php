@@ -38,11 +38,24 @@ when the API responds with an error, so wrap calls in a `try/catch`.
 
 ```php
 $connection = $client->createConnection([
-    "name" => "My Store",
+    "name"                       => "My Store",
     "balance_sheet_account_type" => "asset",
+    "kind"                       => "sales_channel", // or payment_processor, financial_institution
+    "platform"                   => "woocommerce",   // optional
+    "external_id"                => "shop.example",  // optional: the same id returns the same connection
 ]);
 
 $connectionId = $connection->id;
+```
+
+`kind` is required. A `sales_channel` books its orders the way Seller Ledger books Shopify's: an
+order can say how it was paid, and payments through an outside processor post to a clearing
+account for that processor until the processor's own data clears it.
+
+To stop using a key (for example when the store disconnects), revoke it:
+
+```php
+$client->revokeApiKey();
 ```
 
 ## Orders & refunds
@@ -75,6 +88,40 @@ $client->createRefund($connectionId, [
     "currency_code"            => "USD",
     "total_amount"             => 20.00,
     "items_subtotal"           => 20.00,
+]);
+```
+
+Add `payments` to say how an order was paid, or how a refund was returned:
+
+```php
+"payments" => [[
+    "transaction_id"       => "1001-stripe",      // your id, unique within the connection
+    "processor"            => "stripe",           // stripe, paypal, woopayments, square, cash, check, ...
+    "amount"               => 110.00,
+    "paid_at"              => "2026-01-15T10:00:00Z",
+    "processor_charge_id"  => "ch_3Q...",         // the processor's own ids link it to the processor's data
+    "processor_payment_id" => "pi_3Q...",
+]],
+```
+
+## Payouts (payment processor connections)
+
+```php
+$client->createPayout($processorConnectionId, [
+    "payout_id"     => "po_123",
+    "amount"        => 104.13,
+    "currency_code" => "USD",
+    "paid_out_at"   => "2026-01-20T00:00:00Z",
+    "transactions"  => [[
+        "transaction_id"      => "txn_1",
+        "type"                => "charge",         // charge, refund, dispute, dispute_reversal, fee, adjustment
+        "amount"              => 110.00,           // signed: refunds are negative
+        "fee"                 => 3.49,
+        "net"                 => 106.51,
+        "currency_code"       => "USD",
+        "created_at"          => "2026-01-15T10:00:00Z",
+        "processor_charge_id" => "ch_3Q...",
+    ]],
 ]);
 ```
 
