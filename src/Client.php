@@ -63,6 +63,17 @@ class Client extends SellerLedger
     return $this->delete("connections/" . $id, "connection");
   }
 
+  public function createPayout($connection_id, $parameters = [])
+  {
+    $this->throwIfNull($connection_id, "connection_id");
+    return $this->post("connections/" . $connection_id . "/payouts", $parameters, "payout");
+  }
+
+  public function revokeApiKey()
+  {
+    return $this->delete("api_key", "api_key");
+  }
+
   public function getRefunds($connection_id, $parameters = [])
   {
     $this->throwIfNull($connection_id, "Connection ID");
