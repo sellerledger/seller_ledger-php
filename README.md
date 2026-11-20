@@ -40,7 +40,7 @@ when the API responds with an error, so wrap calls in a `try/catch`.
 $connection = $client->createConnection([
     "name"                       => "My Store",
     "balance_sheet_account_type" => "asset",
-    "kind"                       => "sales_channel", // or payment_processor, financial_institution
+    "kind"                       => "order_management", // or payment_processor, financial_institution
     "platform"                   => "woocommerce",   // optional
     "external_id"                => "shop.example",  // optional: the same id returns the same connection
 ]);
@@ -48,9 +48,10 @@ $connection = $client->createConnection([
 $connectionId = $connection->id;
 ```
 
-`kind` is required. A `sales_channel` books its orders the way Seller Ledger books Shopify's: an
+`kind` is required. An `order_management` connection (a store such as WooCommerce) books its orders the way Seller Ledger books Shopify's: an
 order can say how it was paid, and payments through an outside processor post to a clearing
-account for that processor until the processor's own data clears it.
+account for that processor until the processor's own data clears it. `marketplace` is reserved
+for marketplaces that hold the buyer's money themselves and is refused until it is supported.
 
 To stop using a key (for example when the store disconnects), revoke it:
 
